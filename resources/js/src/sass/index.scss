@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("./fonts.scss");
+@layer base {
+    html {
+        font-family: "Montserrat";
+    }
+}
+body {
+    color: #273044;
+}
+.btn {
+    @apply px-8 py-4 uppercase bg-main text-white rounded-full font-bold text-lg transition-colors ease-in-out duration-300 hover:bg-second;
+}
+.rtl {
+    direction: rtl;
+}
+.page-title {
+    @apply m-16 text-center text-5xl font-bold;
+}
+.question {
+    @apply text-2xl  mb-4 font-bold bg-ov-white rounded w-fit p-2 px-4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    font-family: "Montserrat";
+}
+
+p,
+span,
+li,
+label,
+input,
+option {
+    font-family: "Open Sans";
+}
+
+span.highlight-header {
+    font-family: "Montserrat";
+    @apply text-main;
+}
+span.highlight-text {
+    @apply text-second;
+}
+ol {
+    li {
+        line-height: 1.6;
+        @apply text-xl;
+    }
+}
+
+.box-out {
+    @apply flex justify-evenly my-12 flex-wrap gap-8;
+    .book {
+        width: 300px;
+        aspect-ratio: 180/255;
+        // background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/945546/3433202-d2a1bea8a58cd447.png");
+        background-color: rgb(62, 71, 152);
+        background-size: 300px 425px;
+        background-repeat: no-repeat;
+        transition: all 0.3s ease-in-out;
+        transform-origin: left center 0px;
+        transform-style: preserve-3d;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+    }
+    .book::after {
+        content: " ";
+        display: block;
+        opacity: 0;
+        width: 300px;
+        height: 425px;
+        position: relative;
+        left: 8px;
+        transition: all 0.3s ease;
+    }
+    .book::before {
+        content: " ";
+        z-index: 999;
+        display: block;
+        width: 20px;
+        height: 100px;
+        opacity: 0;
+        position: absolute;
+        top: -12px;
+        right: 8px;
+        transition: all 0.25s;
+        background: url("./imgs/book-tail.png");
+        background-size: 16px;
+        background-repeat: no-repeat;
+    }
+    .book:hover {
+        cursor: pointer;
+        transform: rotateY(-28deg) rotateZ(-2deg) scale(1.02);
+        -webkit-backface-visibility: hidden;
+        box-shadow: 1px 3px 2px #353d85, 20px 8px 0 #525dc4;
+        /* transform: scale(1.02); */
+    }
+    /* ----- hover ----- */
+
+    .book:hover::after {
+        content: " ";
+        display: block;
+        opacity: 1;
+        width: calc(100% - 8px);
+        height: 100%;
+        position: relative;
+        left: 8px;
+        background: linear-gradient(-180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+    }
+
+    .book:hover::before {
+        transform: translateY(9px);
+        opacity: 1;
+    }
+}
+.move-sections-container {
+    position: relative;
+    overflow-x: clip;
+    .moving-section {
+        width: 100%;
+        position: absolute;
+        transform: translateX(-50%);
+        transition: left 300ms ease-in-out;
+    }
+
+    .moving-section.prev {
+        left: -150%;
+    }
+    .moving-section.next {
+        left: 150%;
+    }
+    .moving-section.current {
+        left: 50%;
+    }
+}
+
+.slider {
+    position: relative;
+
+    .slides {
+        position: absolute;
+        overflow: clip;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            // z-index: 2;
+            background-color: #00000075;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        img {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: transform 10000ms ease-in, opacity 1000ms ease-in-out;
+        }
+        img.active {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+        img.fix-position {
+            bottom: 0;
+        }
+    }
+}
+
+.table-inputs {
+    tr {
+        @apply h-16;
+    }
+}
+
+.input {
+    @apply text-xl py-1 px-2 focus-within:outline-second rounded mx-4
+}
