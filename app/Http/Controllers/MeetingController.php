@@ -75,8 +75,8 @@ class MeetingController extends Controller
         if ($request->hasFile('assets')) {
             $oldAssets = json_decode($meeting->assets);
             // delete old asstes
-            foreach($oldAssets as $asset){
-                Storage::delete('/public/images/'.$asset);
+            foreach ($oldAssets as $asset) {
+                Storage::delete('/public/images/' . $asset);
             }
             // add new assets
             foreach ($request->file('assets') as $imagefile) {
@@ -111,7 +111,7 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
-       Meeting::destroy([$meeting->id]);
-       return redirect()->back();
+        Meeting::destroy([$meeting->id]);
+        return redirect()->back();
     }
 }

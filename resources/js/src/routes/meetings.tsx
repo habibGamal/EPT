@@ -36,21 +36,21 @@ export default function Meetings() {
 }
 
 const Meeting = ({ meeting }: { meeting: MeetingModel }) => (
-    <Link to={`/meeting_${meeting.id}`}>
-        <div className="meeting relative cursor-pointer border-4 border-second rounded-lg shadow-xl p-4">
-            <span className="block absolute top-0 left-12 bg-main p-2 text-white text-xl rounded-b">{meeting.year}</span>
-            <h4 className="text-6xl font-normal text-center py-16 border-b-2 border-main">@ {meeting.month} / {meeting.day}</h4>
-            <div className="flex justify-between m-4 items-center mb-0">
-                <span className="text-xl font-bold block">{meeting.name}</span>
-                {
-                    meeting.state !== 'ended' &&
-                    <a target="_blank" href={meeting.link} className="rounded bg-second hover:bg-main text-white shadow font-sans p-2">Join Meeting</a>
-                }
-                {
-                    meeting.state === 'ended' &&
-                    <button className="rounded bg-gray-300 text-gray-600 shadow font-sans p-2">Ended Meeting</button>
-                }
-            </div>
+    <div className="meeting relative cursor-pointer border-4 border-second rounded-lg shadow-xl p-4">
+        <span className="block absolute top-0 left-12 bg-main p-2 text-white text-xl rounded-b">{meeting.year}</span>
+        <h4 className="text-6xl font-normal text-center py-16 border-b-2 border-main">@ {meeting.month} / {meeting.day}</h4>
+        <div className="flex justify-between m-4 items-center mb-0">
+            <span className="text-xl font-bold block">{meeting.name}</span>
+            {
+                meeting.state !== 'ended' &&
+                <a target="_blank" href={meeting.link} className="rounded bg-second hover:bg-main text-white shadow font-sans p-2">Join Meeting</a>
+            }
+            {
+                meeting.state === 'ended' &&
+                <Link to={`/meeting_${meeting.id}`} className="rounded bg-second hover:bg-main text-white shadow font-sans p-2">
+                    Show Meeting
+                </Link>
+            }
         </div>
-    </Link>
+    </div>
 )

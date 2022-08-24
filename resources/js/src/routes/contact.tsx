@@ -8,7 +8,7 @@ export default function Contact() {
                 <div>
                     <h3 className="text-5xl mb-8 font-bold uppercase">Contact Us <br /> <span className="highlight-header"> any time</span></h3>
                     <ul className="flex gap-4 flex-wrap text-xl font-[500]">
-                        <li><span className="highlight-text font-bold"> Phone</span> : 01045671345</li>
+                        <li><span className="highlight-text font-bold"> Phone</span> : 01098069075</li>
                         <li><span className="highlight-text font-bold"> Email</span> : youremail@domain.com</li>
                     </ul>
                     <div className="flex gap-8 my-4">

@@ -66,7 +66,10 @@ export default function Meeting({ meeting = null }: { meeting?: MeetingModel | n
                 <button className="rounded bg-second text-white shadow font-sans p-2">Save</button>
                 {
                     meeting ?
-                        <form className='inline-block mx-5' action={`/api/delete-meeting/${meeting.id}`} method='post'><button className="rounded bg-red-600 text-white shadow font-sans p-2">delete</button></form> : ''
+                        <form className='inline-block mx-5' action={`/api/delete-meeting/${meeting.id}`} method='post'>
+                            <input type="hidden" name="_token" value={crfs} />
+                            <button className="rounded bg-red-600 text-white shadow font-sans p-2">delete</button>
+                        </form> : ''
                 }
             </form>
         </div>

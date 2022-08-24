@@ -1,10 +1,12 @@
 import axios from "axios";
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react";
-import { api } from "../api/axios";
+import { useEffect, useState, useContext } from "react";
+import { api, web } from "../api/axios";
+import { ContextApi } from "../Context";
 const NUMBER_OF_SLIDES = 3
 export default function Home() {
     const [activeSlide, setSlide] = useState(1);
+    const [appState, setAppState] = useContext(ContextApi)!;
     const isSlideActive = (slideId: number) => activeSlide === slideId;
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,8 +18,21 @@ export default function Home() {
         }
     }, [setSlide])
     useEffect(() => {
-        api.get('test').then(res => console.log(res))
-    })
+        const auth = async () => {
+            await web.get('/sanctum/csrf-cookie')
+            const login = await api.post('/login', {
+                'email': 'maha@admin.com',
+                'password': '1235645'
+            });
+            const user = await api.get('/user');
+            if (login.status === 200) {
+                setAppState(state => ({ ...state, auth: true }));
+            }
+
+        }
+        // auth()
+    }, [])
+
     return (
         <>
             <header className="bg-transparent py-16 slider">
@@ -30,7 +45,7 @@ export default function Home() {
                     <div className="flex items-center justify-center lg:justify-between">
                         <div className="flex flex-col text-center justify-center items-center mx-auto min-h-[550px] ">
                             <motion.p initial={{ y: 350, opacity: 0 }} transition={{ duration: 1.5, delay: 0, type: 'spring' }} animate={{ y: 0, opacity: 1 }} className="uppercase text-5xl text-white font-bold mb-12 leading-tight lg:text-6xl ">
-                                electronic <br /> <span className="text-main">piano techniques</span> <br /> education system
+                                learning <br /> <span className="text-main">piano online</span> <br /> education system
                             </motion.p>
                             <motion.button initial={{ x: -350, opacity: 0 }} transition={{ duration: 1.5, delay: .4, type: 'spring' }} animate={{ x: 0, opacity: 1 }} className="btn">Go</motion.button>
                         </div>

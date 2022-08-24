@@ -7,7 +7,7 @@ export default function Meeting() {
     const { meetingId } = useParams();
     const [meeting, setMeeting] = useState<MeetingModel>();
     useEffect(() => {
-        const getMeetings = async () => {
+        const getMeeting = async () => {
             const promiseMeeting = await api.get<{ id: number, name: string, link: string, state: string, date: string, assets: string }>(`meeting/${meetingId}`)
             if (promiseMeeting.status !== 200) {
                 throw Error('error fetching meetings');
@@ -15,7 +15,7 @@ export default function Meeting() {
             const meeting = promiseMeeting.data;
             setMeeting(new MeetingModel(meeting.id, meeting.name, meeting.link, meeting.state, meeting.date, meeting.assets));
         }
-        getMeetings();
+        getMeeting();
     }, [])
     const displayAsset = (asset: string,i:number) => {
         const [name, extention] = asset.split('.');

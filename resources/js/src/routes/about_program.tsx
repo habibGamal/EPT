@@ -57,6 +57,10 @@ export default function AboutProgram() {
                             highlight="على ماقدمته لي من دعم ومساعدة خلال تنفيذ البرنامج"
                         />
                         <IDCard
+                            name="م/ فكتور اميل سعيد"
+                            title="هندسة صوتية Sound Engineering"
+                        />
+                        <IDCard
                             name="م/ حبيب جمال حبيب"
                             title="Web Developer"
                         />

@@ -19,6 +19,11 @@ export default function Dashboard() {
                 <div className="rounded hover:scale-110 transition-transform cursor-pointer flex items-center bg-ov-white p-4 shadow-sm max-w-[400px]">
                     <img className="w-full" src="./imgs/quiz.png" alt="" />
                 </div>
+                <Link to="/dashboard_write_article_0">
+                    <div className="rounded hover:scale-110 transition-transform cursor-pointer bg-ov-white p-4 shadow-sm max-w-[400px]">
+                        <img className="w-full" src="./imgs/articles.png" alt="" />
+                    </div>
+                </Link>
             </div>
         </div>
     )

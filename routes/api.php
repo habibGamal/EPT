@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MeetingController;
 use Illuminate\Http\Request;
@@ -20,14 +22,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/book/index',[BookController::class,'index']);
-Route::post('/save-book',[BookController::class,'store']);
-Route::post('/book_update/{book}',[BookController::class,'update']);
-Route::post('/book_delete/{book}',[BookController::class,'destroy']);
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/save-book', [BookController::class, 'store']);
+    Route::post('/book_update/{book}', [BookController::class, 'update']);
+    Route::post('/book_delete/{book}', [BookController::class, 'destroy']);
 
 
-Route::get('/meeting/index',[MeetingController::class,'index']);
-Route::get('/meeting/{meeting}',[MeetingController::class,'show']);
-Route::post('/save-meeting',[MeetingController::class,'store']);
-Route::post('/update-meeting/{meeting}',[MeetingController::class,'update']);
-Route::post('/delete-meeting/{meeting}',[MeetingController::class,'destroy']);
+    Route::post('/save-meeting', [MeetingController::class, 'store']);
+    Route::post('/update-meeting/{meeting}', [MeetingController::class, 'update']);
+    Route::post('/delete-meeting/{meeting}', [MeetingController::class, 'destroy']);
+
+
+    Route::post('/save-article', [ArticleController::class, 'store']);
+    Route::post('/update-article/{article}', [ArticleController::class, 'update']);
+    Route::post('/delete-article/{article}', [ArticleController::class, 'destroy']);
+});
+
+Route::get('/book/index', [BookController::class, 'index']);
+
+
+
+Route::get('/meeting/index', [MeetingController::class, 'index']);
+Route::get('/meeting/{meeting}', [MeetingController::class, 'show']);
+
+
+
+
+Route::get('/article/index', [ArticleController::class, 'index']);
+Route::get('/article/{article}', [ArticleController::class, 'show']);

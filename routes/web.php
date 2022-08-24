@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('{slug}', function () {
     return view('welcome');
-})->where('slug','(.*)?');
+})->where('slug','^(?!sanctum).*$')->name('react');
