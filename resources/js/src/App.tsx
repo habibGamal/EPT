@@ -18,7 +18,15 @@ import Article from './routes/article';
 import Context from './Context';
 import Login from './routes/login';
 import ToggleAuthLink from './components/ToggleAuthLink';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNavicon } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react'
 function App() {
+    const [showNav, setShowNav] = useState(false);
+    const hideNav = ()=>{
+        if(showNav)
+            setShowNav(false);
+    }
     return (
         <Context>
             <div className="App">
@@ -26,16 +34,19 @@ function App() {
                     <nav className="bg-ov-white ">
                         <div className="container flex items-center justify-between py-4">
                             <h1 className="text-5xl font-extrabold">LPO</h1>
-                            <ul className=" hidden lg:flex gap-6 font-bold">
-                                <li><Link to="/">Home</Link></li>
-                                <li><Link to="/about">About</Link></li>
-                                <li><Link to="/images_show">Images</Link></li>
-                                <li><Link to="/material">Material</Link></li>
-                                <li><Link to="/articles">Articles</Link></li>
-                                <li><Link to="/contact">Contact</Link></li>
-                                <li><Link to="/quiz">Quiz</Link></li>
-                                <li className="text-center"><Link to="/meetings">Zoom Meetings</Link></li>
-                                <li><Link to="/about-program">About Program</Link></li>
+                            <button className='xl:hidden' onClick={()=>setShowNav(!showNav)}>
+                                <FontAwesomeIcon icon={faNavicon} size="2x" />
+                            </button>
+                            <ul className={`${showNav ? 'flex' : 'hidden'} nav xl:flex gap-6 font-bold`}>
+                                <li onClick={hideNav}><Link to="/">Home</Link></li>
+                                <li onClick={hideNav}><Link to="/about">About</Link></li>
+                                <li onClick={hideNav}><Link to="/images_show">Images</Link></li>
+                                <li onClick={hideNav}><Link to="/material">Material</Link></li>
+                                <li onClick={hideNav}><Link to="/articles">Articles</Link></li>
+                                <li onClick={hideNav}><Link to="/contact">Contact</Link></li>
+                                <li onClick={hideNav}><Link to="/quiz">Quiz</Link></li>
+                                <li onClick={hideNav}><Link to="/meetings">Zoom Meetings</Link></li>
+                                <li onClick={hideNav}><Link to="/about-program">About Program</Link></li>
                                 <ToggleAuthLink />
                             </ul>
                         </div>

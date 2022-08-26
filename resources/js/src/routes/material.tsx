@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { api } from "../api/axios";
 import { Book } from "../models/Book";
+import { motion } from "framer-motion"
 enum Screen {
     Books,
     Videos,
@@ -34,13 +35,13 @@ export default function Material() {
     return (
         <>
             <section className="bg-ov-white">
-                <div className="container py-16 grid grid-rows-auto gap-4 text-center lg:text-left lg:grid-cols-2 items-center justify-between">
+                <div className="container lg:py-16 py-4 grid grid-rows-auto gap-4 text-center lg:text-left lg:grid-cols-2 items-center justify-between">
                     <div>
-                        <h3 className="text-5xl mb-8 font-bold uppercase">Study <br /> <span className="highlight-header"> material</span></h3>
-                        <p className="text-xl font-[500]">Enjoy the flexibility of the powerful features of Zoom Web Conferencing and get access directly through MasterStudy LMS thanks to Zoom integration. Schools and Universities can enhance their virtual programs by allowing their learners to access high-quality video sessions through desktop and mobile. Create and manage Zoom Meetings directly from your LMS!</p>
+                        <motion.h3 initial={{ x: -300, opacity: 0 }} transition={{ duration: 1, type: 'spring' }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="text-3xl md:text-4xl lg:text-5xl mb-4 lg:mb-8  font-bold uppercase">Study <br /> <span className="highlight-header"> material</span></motion.h3>
+                        <motion.p initial={{ x: -300, opacity: 0 }} transition={{ duration: 1, delay:.5, type: 'spring' }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="text-xl font-[500]">Enjoy the flexibility of the powerful features of Zoom Web Conferencing and get access directly through MasterStudy LMS thanks to Zoom integration. Schools and Universities can enhance their virtual programs by allowing their learners to access high-quality video sessions through desktop and mobile. Create and manage Zoom Meetings directly from your LMS!</motion.p>
                     </div>
                     <div className="h-[400px]">
-                        <img className="h-full mx-auto" src="./imgs/material.png" alt="" />
+                        <motion.img initial={{ x: 300, opacity: 0, scale: 1 }} transition={{ duration: 1, type: 'spring' }} whileHover={{ scale: 1.05 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="h-full w-full object-contain mx-auto" src="./imgs/material.png" alt="" />
                     </div>
                 </div>
             </section>

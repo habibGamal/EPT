@@ -510,8 +510,8 @@ html {
 .left-0{
   left: 0px;
 }
-.z-50{
-  z-index: 50;
+.z-40{
+  z-index: 40;
 }
 .z-\[-1\]{
   z-index: -1;
@@ -561,9 +561,6 @@ html {
 .mb-4{
   margin-bottom: 1rem;
 }
-.mb-8{
-  margin-bottom: 2rem;
-}
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -572,6 +569,9 @@ html {
 }
 .mb-12{
   margin-bottom: 3rem;
+}
+.mb-8{
+  margin-bottom: 2rem;
 }
 .mb-0{
   margin-bottom: 0px;
@@ -635,9 +635,6 @@ html {
   width: -moz-fit-content;
   width: fit-content;
 }
-.w-2\/4{
-  width: 50%;
-}
 .w-\[400px\]{
   width: 400px;
 }
@@ -646,12 +643,6 @@ html {
 }
 .max-w-\[780px\]{
   max-width: 780px;
-}
-.max-w-xl{
-  max-width: 36rem;
-}
-.shrink-0{
-  flex-shrink: 0;
 }
 .cursor-pointer{
   cursor: pointer;
@@ -796,10 +787,6 @@ html {
   --tw-bg-opacity: 1;
   background-color: rgb(242 50 118 / var(--tw-bg-opacity));
 }
-.bg-gray-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
 .object-contain{
   -o-object-fit: contain;
      object-fit: contain;
@@ -829,13 +816,13 @@ html {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-.py-16{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
 .px-1{
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+.py-16{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .px-4{
   padding-left: 1rem;
@@ -875,10 +862,6 @@ html {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
-}
-.text-6xl{
-  font-size: 3.75rem;
-  line-height: 1;
 }
 .font-extrabold{
   font-weight: 800;
@@ -920,10 +903,6 @@ html {
 .text-main{
   --tw-text-opacity: 1;
   color: rgb(242 50 118 / var(--tw-text-opacity));
-}
-.text-gray-600{
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 .shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -1064,6 +1043,24 @@ ol li {
   line-height: 1.75rem;
 }
 
+@media screen and (max-width: 1280px) {
+  .nav{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    z-index: 50;
+    width: 100%;
+    flex-direction: column;
+    --tw-bg-opacity: 1;
+    background-color: rgb(238 241 247 / var(--tw-bg-opacity));
+    padding: 1rem;
+  }
+  .nav li{
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
 .box-out{
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -1198,6 +1195,10 @@ ol li {
   height: 4rem;
 }
 
+input[type=file] {
+  width: 222px;
+}
+
 .input{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -1206,12 +1207,17 @@ ol li {
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .input:focus-within{
   outline-color: #195cc5;
+}
+
+@media (min-width: 768px){
+  .input{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 .focus-within\:outline-second:focus-within{
@@ -1234,6 +1240,17 @@ ol li {
   background-color: rgb(242 50 118 / var(--tw-bg-opacity));
 }
 
+@media (min-width: 640px){
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
 @media (min-width: 768px){
   .md\:mx-16{
     margin-left: 4rem;
@@ -1249,9 +1266,9 @@ ol li {
     font-size: 3rem;
     line-height: 1;
   }
-  .md\:text-6xl{
-    font-size: 3.75rem;
-    line-height: 1;
+  .md\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 
@@ -1259,11 +1276,8 @@ ol li {
   .lg\:col-span-3{
     grid-column: span 3 / span 3;
   }
-  .lg\:block{
-    display: block;
-  }
-  .lg\:flex{
-    display: flex;
+  .lg\:mb-8{
+    margin-bottom: 2rem;
   }
   .lg\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1274,14 +1288,34 @@ ol li {
   .lg\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .lg\:justify-start{
+    justify-content: flex-start;
+  }
   .lg\:justify-between{
     justify-content: space-between;
+  }
+  .lg\:py-16{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
   .lg\:text-left{
     text-align: left;
   }
+  .lg\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
   .lg\:text-6xl{
     font-size: 3.75rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:flex{
+    display: flex;
+  }
+  .xl\:hidden{
+    display: none;
   }
 }

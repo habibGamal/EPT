@@ -55,6 +55,17 @@ ol {
     }
 }
 
+// small screen navigation
+.nav {
+    @media screen and (max-width:1280px) {
+        @apply flex-col absolute top-[80px] bg-ov-white p-4 z-50 w-full left-0;
+        li {
+            @apply mx-12;
+        }
+    }
+}
+
+
 .box-out {
     @apply flex justify-evenly my-12 flex-wrap gap-8;
     .book {
@@ -190,6 +201,9 @@ ol {
     }
 }
 
+input[type="file"]{
+    width: 222px;
+}
 .input {
-    @apply text-xl py-1 px-2 focus-within:outline-second rounded mx-4
+    @apply md:text-xl py-1 px-2 focus-within:outline-second rounded mx-4
 }

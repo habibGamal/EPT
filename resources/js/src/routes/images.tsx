@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 export default function Images() {
     return (
         <div className="container">
@@ -51,7 +52,7 @@ export default function Images() {
                 <Card
                     src="./imgs/piano7.gif"
                     title="ضبط يد الطالب علي سطح خشبي علي ان تكون اليد اخذه للشكل المستدير مع توضيح
-                    ترقيم الاصابع في اليدين كما هو موضح بالشكل 
+                    ترقيم الاصابع في اليدين كما هو موضح بالشكل
                     "
                     text=""
                 />
@@ -71,7 +72,7 @@ export default function Images() {
 }
 
 const Card = ({ src, title, text, list = [] }: { src: string, title: string, text: string, list?: string[] }) => (
-    <div className="card rounded-2xl shadow-lg overflow-hidden">
+    <motion.div initial={{ y: 300, opacity: 0, scale: 1 }} transition={{ duration: 1, type: 'spring' }} whileHover={{ scale: 1.05 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} className="card rounded-2xl shadow-lg overflow-hidden">
         <img className="border-b-2 border-main object-cover w-full h-8/12" src={src} alt="" />
         <p className="rtl p-4 font-sans"><span className="font-bold">{title}</span>{text}</p>
         <ul className="rtl p-4 pt-0 font-sans m-0 mx-4">
@@ -79,5 +80,5 @@ const Card = ({ src, title, text, list = [] }: { src: string, title: string, tex
                 list.map(li => <li className="font-sans list-disc">{li}</li>)
             }
         </ul>
-    </div>
+    </motion.div>
 )
